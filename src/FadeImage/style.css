@@ -1,0 +1,19 @@
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-component {
+  opacity: 0;
+}
+
+.fade-component.fade-in {
+  animation: fadeUp 0.3s ease-in-out forwards;
+  
+}

@@ -1,23 +1,27 @@
 import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import FadeComponent from './FadeImage';
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // fadeout overlay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoading && <div className="overlay"></div>}
+      <FadeComponent>
+        <img src="cat.jpg" width="500px" alt="Sample Image" />
+      </FadeComponent>
     </div>
   );
 }
